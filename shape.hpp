@@ -5,6 +5,9 @@ class Shape{
     protected:
         int ID;
         Triangle* prevTriangle; 
+    public:
+        Shape(int id);
+        virtual ~Shape();
 
 };
 
