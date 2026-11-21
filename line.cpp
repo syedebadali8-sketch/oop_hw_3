@@ -20,8 +20,6 @@ void Line :: draw(char canvas[][80]){
     int x2 = p2.getx();
     int y2 = p2.gety();
 
-    
-    
     if (y1 == y2){
         if (x1 > x2){
             int temp = x1;
