@@ -25,8 +25,13 @@ void Line :: draw(char canvas[][80]){
                 canvas[y1][x] = '-';
             }
         }
+    }else if (x1 == x2){
+        for (int y = y1; y <= y2; y++){
+            if (y >= 0 && y < 40 && x1 >= 0 && x1 < 80){
+                canvas[y][x1] = '|';
+            }
+        }
     }
-
 }
 
 
