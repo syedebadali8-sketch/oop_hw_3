@@ -6,3 +6,11 @@ Shape :: Shape(int id){
     ID = id;
     prevTriangle = nullptr;
 }
+
+Shape :: ~Shape(){
+
+}
+
+int Shape :: getID() const{
+    return ID;
+}
