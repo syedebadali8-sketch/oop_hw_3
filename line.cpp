@@ -64,6 +64,12 @@ void Line :: draw(char canvas[][80]){
             }
         }
     }
+    if (p1.getx() >= 0 && p1.getx() < 80 && p1.gety() >= 0 && p1.gety() < 40){
+    canvas[p1.gety()][p1.getx()] = 'o';
+    }
+    if (p2.getx() >= 0 && p2.getx() < 80 && p2.gety() >= 0 && p2.gety() < 40){
+        canvas[p2.gety()][p2.getx()] = 'o';
+    }
 }
 
 
