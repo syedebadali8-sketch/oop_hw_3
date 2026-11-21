@@ -12,6 +12,8 @@ class Point : public Shape{
         Point(int id, int x, int y);
         int getx() const;
         int gety() const;
+        void draw(char canvas[][80]) override;
+
 };
 
 #endif
