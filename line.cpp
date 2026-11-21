@@ -3,7 +3,6 @@
 #include <cmath>
 using namespace std;
 
-
 Line :: Line(int id, Point a, Point b) : Shape(id), p1(a), p2(b){}
 
 Point Line :: getp1() const{
@@ -64,7 +63,6 @@ void Line :: draw(char canvas[][80]){
                 }
             }
         }
-
     }
 }
 
