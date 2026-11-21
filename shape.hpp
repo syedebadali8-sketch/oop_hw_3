@@ -8,6 +8,7 @@ class Shape{
     public:
         Shape(int id);
         virtual ~Shape();
+        virtual void draw(char canvas[][80]) = 0;
 
 };
 
