@@ -79,3 +79,11 @@ Triangle Triangle :: mirrored(int side){
     Triangle reflected(0, line1, line2, line3);
     return reflected;
 }
+
+Triangle* Triangle :: getprevTriangle() const{
+    return prevTriangle;
+}
+
+void Triangle :: setprevTriangle(Triangle* triangle){
+    prevTriangle = triangle;
+}
