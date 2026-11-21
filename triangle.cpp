@@ -15,3 +15,9 @@ Line Triangle :: getl2() const{
 Line Triangle :: getl3() const{
     return l3;
 }
+
+void Triangle :: draw(char canvas[][80]){
+    l1.draw(canvas);
+    l2.draw(canvas);
+    l3.draw(canvas);
+}
