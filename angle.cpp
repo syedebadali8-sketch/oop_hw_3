@@ -12,3 +12,8 @@ Line Angle :: getl2() const{
     return l2;
 }
 
+void Angle :: draw(char canvas[][80]){
+    l1.draw(canvas);
+    l2.draw(canvas);
+}
+
