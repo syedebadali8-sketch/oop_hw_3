@@ -18,6 +18,18 @@ void Line :: draw(char canvas[][80]){
     int y1 = p1.gety();
     int x2 = p2.getx();
     int y2 = p2.gety();
+
+    if (x1 > x2){
+        int temp = x1;
+        x1 = x2;
+        x2 = temp;
+    }
+
+    if (y1 > y2){
+        int temp = y1;
+        y1 = y2;
+        y2 = temp;
+    }
     
     if (y1 == y2){
         for (int x = x1; x <= x2; x++){
