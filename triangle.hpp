@@ -15,6 +15,6 @@ class Triangle : public Shape{
         Line getl2() const;
         Line getl3() const;
         void draw(char canvas[][80]) override;
-
+        Triangle mirrored(int side);
 };
 #endif
