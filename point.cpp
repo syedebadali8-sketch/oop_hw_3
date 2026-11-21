@@ -15,3 +15,10 @@ int Point :: gety() const{
     return y;
 }
 
+void Point :: draw(char canvas[][80]){
+    if (x >= 0 && x < 80 && y >= 0 && y < 40){
+        canvas[y][x] = 'o';
+    }
+}
+
+
