@@ -50,29 +50,20 @@ void Pentagon :: draw(char canvas[][80]){
 }
 
 bool samePointP(Point a, Point b){
-    return a.getx() == b.getx() &&
-           a.gety() == b.gety();
+    return a.getx() == b.getx() && a.gety() == b.gety();
 }
 
 bool sameLineP(Line a, Line b){
-    return (samePointP(a.getp1(), b.getp1()) &&
-            samePointP(a.getp2(), b.getp2())) ||
-           (samePointP(a.getp1(), b.getp2()) &&
-            samePointP(a.getp2(), b.getp1()));
+    return (samePointP(a.getp1(), b.getp1()) && samePointP(a.getp2(), b.getp2())) || (samePointP(a.getp1(), b.getp2()) && samePointP(a.getp2(), b.getp1()));
 }
 
 bool hasLineP(Triangle* t, Line line){
-    return sameLineP(t->getl1(), line) ||
-           sameLineP(t->getl2(), line) ||
-           sameLineP(t->getl3(), line);
+    return sameLineP(t->getl1(), line) || sameLineP(t->getl2(), line) || sameLineP(t->getl3(), line);
 }
 
 bool sameTriangleP(Triangle* a, const Triangle& b){
-    return hasLineP(a, b.getl1()) &&
-           hasLineP(a, b.getl2()) &&
-           hasLineP(a, b.getl3());
+    return hasLineP(a, b.getl1()) && hasLineP(a, b.getl2()) && hasLineP(a, b.getl3());
 }
-
 
 Hexagon* Pentagon :: operator+(const Triangle& other) const{
     Triangle* third = prevTriangle;
@@ -163,16 +154,10 @@ Hexagon* Pentagon :: operator+(const Triangle& other) const{
     }
     int dx = q.getx() - p.getx();
     int dy = q.gety() - p.gety();
+    int cross1 = dx * (r.gety() - p.gety()) - dy * (r.getx() - p.getx());
+    int cross2 = dx * (s.gety() - p.gety()) - dy * (s.getx() - p.getx());
 
-    int cross1 = dx * (r.gety() - p.gety()) -
-                 dy * (r.getx() - p.getx());
-
-    int cross2 = dx * (s.gety() - p.gety()) -
-                 dy * (s.getx() - p.getx());
-
-    if (cross1 == 0 || cross2 == 0 ||
-        (cross1 > 0 && cross2 > 0) ||
-        (cross1 < 0 && cross2 < 0)){
+    if (cross1 == 0 || cross2 == 0 || (cross1 > 0 && cross2 > 0) || (cross1 < 0 && cross2 < 0)){
         cout << "Triangle must be outside the Pentagon" << endl;
         return nullptr;
     }
@@ -180,9 +165,7 @@ Hexagon* Pentagon :: operator+(const Triangle& other) const{
     Triangle t2(0, second->getl1(), second->getl2(), second->getl3());
     Triangle t3(0, third->getl1(), third->getl2(), third->getl3());
     Triangle t4(0, other.getl1(), other.getl2(), other.getl3());
-
     Hexagon* result = new Hexagon(0, t1, t2, t3, t4);
-
     return result;
 }
 
@@ -222,13 +205,8 @@ Rectangle* Pentagon :: operator-(const Triangle& other) const{
         cout << "Triangle not found in Pentagon" << endl;
         return nullptr;
     }
-
-    Triangle t1(0, remaining1->getl1(),
-                  remaining1->getl2(),
-                  remaining1->getl3());
-    Triangle t2(0, remaining2->getl1(),
-                  remaining2->getl2(),
-                  remaining2->getl3());
+    Triangle t1(0, remaining1->getl1(),remaining1->getl2(),remaining1->getl3());
+    Triangle t2(0, remaining2->getl1(),remaining2->getl2(),remaining2->getl3());
 
     Rectangle* result = t1 + t2;
     if (result == nullptr){
