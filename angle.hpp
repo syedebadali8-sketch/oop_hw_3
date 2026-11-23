@@ -5,6 +5,8 @@
 #include "line.hpp"
 using namespace std;
 
+class Triangle;
+
 class Angle : public Shape{
     private:
         Line l1;
@@ -14,6 +16,7 @@ class Angle : public Shape{
         Line getl1() const;
         Line getl2() const;
         virtual void draw(char canvas[][80]) override;
+        Triangle* operator+(const Line& other) const;
 };
 
 #endif
