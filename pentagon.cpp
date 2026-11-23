@@ -1,16 +1,17 @@
-#ifndef PENTAGON_HPP
-#define PENTAGON_HPP
-
-#include "triangle.hpp"
+#include "pentagon.hpp"
+#include <iostream>
 using namespace std;
 
-class Pentagon : public Shape{
-    public:
-        Pentagon(int id, Triangle first, Triangle second, Triangle third);
-        Pentagon(const Pentagon& other);
-        Pentagon& operator=(const Pentagon& other);
-        ~Pentagon();
-        void draw(char canvas[][80]) override;
-};
+Pentagon :: Pentagon(int id, Triangle first, Triangle second, Triangle third) : Shape(id){
+    Triangle* firstCopy = new Triangle(first);
+    Triangle* secondCopy = new Triangle(second);
+    Triangle* thirdCopy = new Triangle(third);
+    secondCopy->setprevTriangle(firstCopy);
+    thirdCopy->setprevTriangle(secondCopy);
+    prevTriangle = thirdCopy;
+}
 
-#endif
+Pentagon :: ~Pentagon(){
+    delete prevTriangle;
+    prevTriangle = nullptr;
+}
