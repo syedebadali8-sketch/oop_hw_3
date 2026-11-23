@@ -92,3 +92,30 @@ Triangle :: ~Triangle(){
     delete prevTriangle;
     prevTriangle = nullptr;
 }
+
+Triangle :: Triangle(const Triangle& other) : Shape(other.ID), l1(other.l1), l2(other.l2), l3(other.l3){
+    if (other.prevTriangle == nullptr){
+        prevTriangle = nullptr;
+    }
+    else{
+        prevTriangle = new Triangle(*other.prevTriangle);
+    }
+}
+
+Triangle& Triangle:: operator=(const Triangle& other){
+    if (this == &other){
+        return *this;
+    }
+    delete prevTriangle;
+    prevTriangle = nullptr;
+    ID = other.ID;
+    l1 = other.l1;
+    l2 = other.l2;
+    l3 = other.l3;
+    if (other.prevTriangle != nullptr){
+        prevTriangle = new Triangle(*other.prevTriangle);
+    }
+    
+    return *this;
+}
+
