@@ -18,6 +18,20 @@ Rectangle :: Rectangle(const Rectangle& other) : Shape(other.ID){
     }
 }
 
+Rectangle& Rectangle :: operator=(const Rectangle& other){
+    if (this == &other){
+        return *this;
+    }
+    Triangle* temp = nullptr;
+    if (other.prevTriangle != nullptr){
+        temp = new Triangle(*other.prevTriangle);
+    }
+    delete prevTriangle;
+    ID = other.ID;
+    prevTriangle = temp;
+    return *this;
+}
+
 Rectangle :: ~Rectangle(){
     delete prevTriangle;
     prevTriangle = nullptr;
