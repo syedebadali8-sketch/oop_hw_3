@@ -3,7 +3,7 @@
 
 #include "triangle.hpp"
 using namespace std;
-
+class Hexagon;
 class Pentagon : public Shape{
     public:
         Pentagon(int id, Triangle first, Triangle second, Triangle third);
@@ -11,6 +11,7 @@ class Pentagon : public Shape{
         Pentagon& operator=(const Pentagon& other);
         ~Pentagon();
         void draw(char canvas[][80]) override;
+        Hexagon* operator+(const Triangle& other) const;
 };
 
 #endif
