@@ -1,5 +1,6 @@
 #include "line.hpp"
 #include <iostream>
+#include "angle.hpp"
 #include <cmath>
 using namespace std;
 
@@ -70,6 +71,44 @@ void Line :: draw(char canvas[][80]){
     if (p2.getx() >= 0 && p2.getx() < 80 && p2.gety() >= 0 && p2.gety() < 40){
         canvas[p2.gety()][p2.getx()] = 'o';
     }
+}
+
+Angle* Line :: operator+(const Line& other) const{
+    Point a = p1;
+    Point b = p2;
+    Point c = other.p1;
+    Point d = other.p2;
+    bool shared = false;
+    if ((a.getx() == c.getx() && a.gety() == c.gety()) ||
+        (a.getx() == d.getx() && a.gety() == d.gety()) ||
+        (b.getx() == c.getx() && b.gety() == c.gety()) ||
+        (b.getx() == d.getx() && b.gety() == d.gety())){
+        shared = true;
+    }
+    if (shared == false){
+        cout << "Lines do not share an endpoint" << endl;
+        return nullptr;
+    }
+    int dx1 = b.getx() - a.getx();
+    int dy1 = b.gety() - a.gety();
+    int dx2 = d.getx() - c.getx();
+    int dy2 = d.gety() - c.gety();
+    if (dx1 == 0 && dy1 == 0){
+        cout << "Invalid first line" << endl;
+        return nullptr;
+    }
+
+    if (dx2 == 0 && dy2 == 0){
+        cout << "Invalid second line" << endl;
+        return nullptr;
+    }
+    if (dx1 * dy2 == dy1 * dx2){
+        cout << "Lines are parallel" << endl;
+        return nullptr;
+    }
+    Angle* newAngle = new Angle(0, *this, other);
+
+    return newAngle;
 }
 
 

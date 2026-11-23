@@ -4,6 +4,8 @@
 #include "shape.hpp"
 using namespace std;
 
+class Line;
+
 class Point : public Shape{
     private:
         int x;
