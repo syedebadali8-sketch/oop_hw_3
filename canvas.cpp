@@ -52,4 +52,8 @@ void Canvas :: history(){
     shapes.display();
 }
 
+void Canvas :: draw(){
+    clear();
+    shapes.draw(board);
+}
 

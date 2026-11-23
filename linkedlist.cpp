@@ -77,5 +77,13 @@ LinkedList :: ~LinkedList(){
     clear();
 }
 
+void LinkedList :: draw(char canvas[][80]){
+    Node* current = head;
+    while (current != nullptr){
+        current->getdata()->draw(canvas);
+        current = current->getnext();
+    }
+}
+
 
 

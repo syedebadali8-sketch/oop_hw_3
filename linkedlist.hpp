@@ -16,6 +16,7 @@ class LinkedList{
         bool remove(int id);
         void display();
         void clear();
+        void draw(char canvas[][80]);
 };
 
 #endif
