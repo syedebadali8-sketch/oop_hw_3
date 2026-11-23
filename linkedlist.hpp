@@ -8,6 +8,8 @@ using namespace std;
 class LinkedList{
     private:
         Node* head;
+        LinkedList(const LinkedList& other);
+        LinkedList& operator=(const LinkedList& other);
     public:
         LinkedList();
         ~LinkedList();
