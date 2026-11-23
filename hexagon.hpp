@@ -14,6 +14,7 @@ class Hexagon : public Shape{
         ~Hexagon();
         void draw(char canvas[][80]) override;
         Pentagon* operator-(const Triangle& other) const;
+        void printType() const override;
 };
 
 #endif

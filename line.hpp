@@ -16,6 +16,7 @@ class Line : public Shape{
         Point getp2() const;    
         void draw(char canvas[][80]) override;
         Angle* operator+(const Line& other) const;
+        void printType() const override;
 };
 
 #endif

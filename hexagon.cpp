@@ -154,5 +154,9 @@ Pentagon* Hexagon :: operator-(const Triangle& other) const{
     return result;
 }
 
+void Hexagon :: printType() const{
+    cout << "Hexagon";
+}
+
 
 

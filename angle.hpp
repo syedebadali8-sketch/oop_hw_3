@@ -17,6 +17,7 @@ class Angle : public Shape{
         Line getl2() const;
         virtual void draw(char canvas[][80]) override;
         Triangle* operator+(const Line& other) const;
+        void printType() const override;
 };
 
 #endif

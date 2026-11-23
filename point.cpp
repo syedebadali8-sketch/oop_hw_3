@@ -31,4 +31,8 @@ Line* Point :: operator+(const Point& other) const{
     return newLine;
 }
 
+void Point :: printType() const{
+    cout << "Point";
+}
+
 

@@ -216,6 +216,9 @@ Rectangle* Pentagon :: operator-(const Triangle& other) const{
     return result;
 }
 
+void Pentagon :: printType() const{
+    cout << "Pentagon";
+}
 
 
 

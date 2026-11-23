@@ -56,14 +56,18 @@ bool LinkedList :: remove(int id){
     return false;
 }
 
+
 void LinkedList :: display(){
     Node* current = head;
-
     while (current != nullptr){
-        cout << "Shape ID: " << current->getdata()->getID() << endl;
+        cout << "Shape ID: " << current->getdata()->getID();
+        cout << " - ";
+        current->getdata()->printType();
+        cout << endl;
         current = current->getnext();
     }
 }
+
 
 void LinkedList :: clear(){
     while (head != nullptr){

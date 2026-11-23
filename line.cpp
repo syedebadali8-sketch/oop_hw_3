@@ -108,5 +108,8 @@ Angle* Line :: operator+(const Line& other) const{
     return newAngle;
 }
 
+void Line :: printType() const{
+    cout << "Line";
+}
 
 

@@ -166,3 +166,7 @@ Triangle* Rectangle :: operator-(const Triangle& other) const{
     cout << "Triangle not found in Rectangle" << endl;
     return nullptr;
 }
+
+void Rectangle :: printType() const{
+    cout << "Rectangle";
+}

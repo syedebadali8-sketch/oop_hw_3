@@ -24,5 +24,6 @@ class Triangle : public Shape{
         Triangle* getprevTriangle() const;
         void setprevTriangle(Triangle* triangle);
         Rectangle* operator+(const Triangle& other) const;
+        void printType() const override;
 };
 #endif

@@ -16,6 +16,7 @@ class Point : public Shape{
         int gety() const;
         void draw(char canvas[][80]) override;
         Line* operator+(const Point& other) const;
+        void printType() const override;
 
 };
 

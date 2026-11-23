@@ -79,4 +79,8 @@ Triangle* Angle :: operator+(const Line& other) const{
     return newTriangle;
 }
 
+void Angle :: printType() const{
+    cout << "Angle";
+}
+
 

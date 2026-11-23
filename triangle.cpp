@@ -226,4 +226,8 @@ Rectangle* Triangle :: operator+(const Triangle& other) const{
     return newRectangle;
 }
 
+void Triangle :: printType() const{
+    cout << "Triangle";
+}
+
 

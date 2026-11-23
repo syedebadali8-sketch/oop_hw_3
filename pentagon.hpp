@@ -14,6 +14,7 @@ class Pentagon : public Shape{
         void draw(char canvas[][80]) override;
         Hexagon* operator+(const Triangle& other) const;
         Rectangle* operator-(const Triangle& other) const;
+        void printType() const override;
 };
 
 #endif
