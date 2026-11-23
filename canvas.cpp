@@ -13,3 +13,12 @@ void Canvas :: clear(){
         }
     }
 }
+
+void Canvas :: display(){
+    for (int i = 0; i < 40; i++){
+        for (int j = 0; j < 80; j++){
+            cout << board[i][j];
+        }
+        cout << endl;
+    }
+}
