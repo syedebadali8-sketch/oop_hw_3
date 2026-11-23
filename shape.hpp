@@ -12,6 +12,7 @@ class Shape{
         virtual ~Shape();
         virtual void draw(char canvas[][80]) = 0;
         int getID() const;
+        void setID(int id);
 };
 
 #endif

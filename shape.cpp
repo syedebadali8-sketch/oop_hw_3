@@ -14,3 +14,7 @@ Shape :: ~Shape(){
 int Shape :: getID() const{
     return ID;
 }
+
+void Shape :: setID(int id){
+    ID = id;
+}

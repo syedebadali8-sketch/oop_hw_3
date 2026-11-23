@@ -3,6 +3,7 @@
 using namespace std;
 
 Canvas :: Canvas(){
+    nextID = 1;
     clear();
 }
 
@@ -23,13 +24,29 @@ void Canvas :: display(){
     }
 }
 
+
 void Canvas :: addShape(Shape* shape){
     if (shape == nullptr){
         return;
     }
-    if (shapes.search(shape->getID()) != nullptr){
-        cout << "Shape ID already exists" << endl;
+
+    if (shape->getID() < 0){
+        cout << "Invalid Shape ID" << endl;
         return;
+    }
+
+    if (shape->getID() == 0){
+        shape->setID(nextID);
+        nextID++;
+    }
+    else{
+        if (shapes.search(shape->getID()) != nullptr){
+            cout << "Shape ID already exists" << endl;
+            return;
+        }
+        if (shape->getID() >= nextID){
+            nextID = shape->getID() + 1;
+        }
     }
     shapes.insertatend(shape);
 }

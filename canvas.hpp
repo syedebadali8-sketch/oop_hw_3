@@ -8,6 +8,7 @@ class Canvas{
     private:
         char board[40][80];
         LinkedList shapes;
+        int nextID;
     public:
         Canvas();
         void clear();
