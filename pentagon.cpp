@@ -15,3 +15,12 @@ Pentagon :: ~Pentagon(){
     delete prevTriangle;
     prevTriangle = nullptr;
 }
+
+Pentagon :: Pentagon(const Pentagon& other) : Shape(other.ID){
+    if (other.prevTriangle == nullptr){
+        prevTriangle = nullptr;
+    }
+    else{
+        prevTriangle = new Triangle(*other.prevTriangle);
+    }
+}
