@@ -87,3 +87,8 @@ Triangle* Triangle :: getprevTriangle() const{
 void Triangle :: setprevTriangle(Triangle* triangle){
     prevTriangle = triangle;
 }
+
+Triangle :: ~Triangle(){
+    delete prevTriangle;
+    prevTriangle = nullptr;
+}
