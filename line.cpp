@@ -79,10 +79,7 @@ Angle* Line :: operator+(const Line& other) const{
     Point c = other.p1;
     Point d = other.p2;
     bool shared = false;
-    if ((a.getx() == c.getx() && a.gety() == c.gety()) ||
-        (a.getx() == d.getx() && a.gety() == d.gety()) ||
-        (b.getx() == c.getx() && b.gety() == c.gety()) ||
-        (b.getx() == d.getx() && b.gety() == d.gety())){
+    if ((a.getx() == c.getx() && a.gety() == c.gety()) || (a.getx() == d.getx() && a.gety() == d.gety()) || (b.getx() == c.getx() && b.gety() == c.gety()) || (b.getx() == d.getx() && b.gety() == d.gety())){
         shared = true;
     }
     if (shared == false){
