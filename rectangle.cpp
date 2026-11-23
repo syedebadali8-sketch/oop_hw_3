@@ -51,32 +51,22 @@ bool samePointR(Point a, Point b){
 }
 
 bool sameLineR(Line a, Line b){
-    return (samePointR(a.getp1(), b.getp1()) &&
-            samePointR(a.getp2(), b.getp2())) ||
-           (samePointR(a.getp1(), b.getp2()) &&
-            samePointR(a.getp2(), b.getp1()));
+    return (samePointR(a.getp1(), b.getp1()) && samePointR(a.getp2(), b.getp2())) || (samePointR(a.getp1(), b.getp2()) && samePointR(a.getp2(), b.getp1()));
 }
 
 bool hasLineR(Triangle t, Line line){
-    return sameLineR(t.getl1(), line) ||
-           sameLineR(t.getl2(), line) ||
-           sameLineR(t.getl3(), line);
+    return sameLineR(t.getl1(), line) || sameLineR(t.getl2(), line) || sameLineR(t.getl3(), line);
 }
 
 bool sameTriangleR(Triangle a, Triangle b){
-    return hasLineR(a, b.getl1()) &&
-           hasLineR(a, b.getl2()) &&
-           hasLineR(a, b.getl3());
+    return hasLineR(a, b.getl1()) && hasLineR(a, b.getl2()) && hasLineR(a, b.getl3());
 }
 
-
 Pentagon* Rectangle :: operator+(const Triangle& other) const{
-    if (prevTriangle == nullptr ||
-        prevTriangle->getprevTriangle() == nullptr){
+    if (prevTriangle == nullptr || prevTriangle->getprevTriangle() == nullptr){
         cout << "Invalid Rectangle" << endl;
         return nullptr;
     }
-
     Triangle* second = prevTriangle;
     Triangle* first = second->getprevTriangle();
 
@@ -142,16 +132,10 @@ Pentagon* Rectangle :: operator+(const Triangle& other) const{
 
     int dx = q.getx() - p.getx();
     int dy = q.gety() - p.gety();
+    int cross1 = dx * (r.gety() - p.gety()) - dy * (r.getx() - p.getx());
+    int cross2 = dx * (s.gety() - p.gety()) - dy * (s.getx() - p.getx());
 
-    int cross1 = dx * (r.gety() - p.gety()) -
-                 dy * (r.getx() - p.getx());
-
-    int cross2 = dx * (s.gety() - p.gety()) -
-                 dy * (s.getx() - p.getx());
-
-    if (cross1 == 0 || cross2 == 0 ||
-        (cross1 > 0 && cross2 > 0) ||
-        (cross1 < 0 && cross2 < 0)){
+    if (cross1 == 0 || cross2 == 0 || (cross1 > 0 && cross2 > 0) || (cross1 < 0 && cross2 < 0)){
         cout << "Triangle must be outside the Rectangle" << endl;
         return nullptr;
     }
@@ -164,8 +148,7 @@ Pentagon* Rectangle :: operator+(const Triangle& other) const{
 }
 
 Triangle* Rectangle :: operator-(const Triangle& other) const{
-    if (prevTriangle == nullptr ||
-        prevTriangle->getprevTriangle() == nullptr){
+    if (prevTriangle == nullptr || prevTriangle->getprevTriangle() == nullptr){
         cout << "Invalid Rectangle" << endl;
         return nullptr;
     }
@@ -173,23 +156,11 @@ Triangle* Rectangle :: operator-(const Triangle& other) const{
     Triangle* second = prevTriangle;
     Triangle* first = second->getprevTriangle();
     if (sameTriangleR(*first, other)){
-        Triangle* result = new Triangle(
-            0,
-            second->getl1(),
-            second->getl2(),
-            second->getl3()
-        );
-
+        Triangle* result = new Triangle(0,second->getl1(),second->getl2(),second->getl3());
         return result;
     }
     if (sameTriangleR(*second, other)){
-        Triangle* result = new Triangle(
-            0,
-            first->getl1(),
-            first->getl2(),
-            first->getl3()
-        );
-
+        Triangle* result = new Triangle(0,first->getl1(),first->getl2(),first->getl3());
         return result;
     }
     cout << "Triangle not found in Rectangle" << endl;
