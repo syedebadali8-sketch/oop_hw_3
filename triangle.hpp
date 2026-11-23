@@ -4,6 +4,8 @@
 #include "line.hpp"
 using namespace std;
 
+class Rectangle;
+
 class Triangle : public Shape{
     private:
         Line l1;
@@ -21,5 +23,6 @@ class Triangle : public Shape{
         Triangle mirrored(int side);
         Triangle* getprevTriangle() const;
         void setprevTriangle(Triangle* triangle);
+        Rectangle* operator+(const Triangle& other) const;
 };
 #endif
