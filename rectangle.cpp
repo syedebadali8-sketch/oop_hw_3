@@ -63,6 +63,13 @@ bool hasLineR(Triangle t, Line line){
            sameLineR(t.getl3(), line);
 }
 
+bool sameTriangleR(Triangle a, Triangle b){
+    return hasLineR(a, b.getl1()) &&
+           hasLineR(a, b.getl2()) &&
+           hasLineR(a, b.getl3());
+}
+
+
 Pentagon* Rectangle :: operator+(const Triangle& other) const{
     if (prevTriangle == nullptr ||
         prevTriangle->getprevTriangle() == nullptr){
@@ -154,4 +161,37 @@ Pentagon* Rectangle :: operator+(const Triangle& other) const{
     Pentagon* result = new Pentagon(0, t1, t2, t3);
 
     return result;
+}
+
+Triangle* Rectangle :: operator-(const Triangle& other) const{
+    if (prevTriangle == nullptr ||
+        prevTriangle->getprevTriangle() == nullptr){
+        cout << "Invalid Rectangle" << endl;
+        return nullptr;
+    }
+
+    Triangle* second = prevTriangle;
+    Triangle* first = second->getprevTriangle();
+    if (sameTriangleR(*first, other)){
+        Triangle* result = new Triangle(
+            0,
+            second->getl1(),
+            second->getl2(),
+            second->getl3()
+        );
+
+        return result;
+    }
+    if (sameTriangleR(*second, other)){
+        Triangle* result = new Triangle(
+            0,
+            first->getl1(),
+            first->getl2(),
+            first->getl3()
+        );
+
+        return result;
+    }
+    cout << "Triangle not found in Rectangle" << endl;
+    return nullptr;
 }

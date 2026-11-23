@@ -13,6 +13,7 @@ class Rectangle : public Shape{
         ~Rectangle();
         void draw(char canvas[][80]) override;
         Pentagon* operator+(const Triangle& other) const;
+        Triangle* operator-(const Triangle& other) const;
 };
 
 #endif
