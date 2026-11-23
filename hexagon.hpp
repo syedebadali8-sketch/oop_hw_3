@@ -4,6 +4,8 @@
 #include "triangle.hpp"
 using namespace std;
 
+class Pentagon;
+
 class Hexagon : public Shape{
     public:
         Hexagon(int id, Triangle first, Triangle second, Triangle third, Triangle fourth);
@@ -11,6 +13,7 @@ class Hexagon : public Shape{
         Hexagon& operator=(const Hexagon& other);
         ~Hexagon();
         void draw(char canvas[][80]) override;
+        Pentagon* operator-(const Triangle& other) const;
 };
 
 #endif
