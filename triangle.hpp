@@ -11,6 +11,9 @@ class Triangle : public Shape{
         Line l3;
     public:
         Triangle(int id, Line a, Line b, Line c);
+        Triangle(const Triangle& other);
+        Triangle& operator=(const Triangle& other);
+        ~Triangle();
         Line getl1() const;
         Line getl2() const;
         Line getl3() const;
