@@ -24,3 +24,27 @@ Pentagon :: Pentagon(const Pentagon& other) : Shape(other.ID){
         prevTriangle = new Triangle(*other.prevTriangle);
     }
 }
+
+Pentagon& Pentagon :: operator=(const Pentagon& other){
+    if (this == &other){
+        return *this;
+    }
+    Triangle* temp = nullptr;
+    if (other.prevTriangle != nullptr){
+        temp = new Triangle(*other.prevTriangle);
+    }
+    delete prevTriangle;
+    ID = other.ID;
+    prevTriangle = temp;
+    return *this;
+}
+
+void Pentagon :: draw(char canvas[][80]){
+    Triangle* current = prevTriangle;
+    while (current != nullptr){
+        current->draw(canvas);
+        current = current->getprevTriangle();
+    }
+}
+
+
