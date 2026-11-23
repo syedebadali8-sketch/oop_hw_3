@@ -1,4 +1,5 @@
 #include "pentagon.hpp"
+#include "rectangle.hpp"
 #include "hexagon.hpp"
 #include <iostream>
 using namespace std;
@@ -66,40 +67,37 @@ bool hasLineP(Triangle* t, Line line){
            sameLineP(t->getl3(), line);
 }
 
+bool sameTriangleP(Triangle* a, const Triangle& b){
+    return hasLineP(a, b.getl1()) &&
+           hasLineP(a, b.getl2()) &&
+           hasLineP(a, b.getl3());
+}
+
+
 Hexagon* Pentagon :: operator+(const Triangle& other) const{
     Triangle* third = prevTriangle;
-
     if (third == nullptr){
         cout << "Invalid Pentagon" << endl;
         return nullptr;
     }
-
     Triangle* second = third->getprevTriangle();
-
     if (second == nullptr){
         cout << "Invalid Pentagon" << endl;
         return nullptr;
     }
-
     Triangle* first = second->getprevTriangle();
-
     if (first == nullptr || first->getprevTriangle() != nullptr){
         cout << "Invalid Pentagon" << endl;
         return nullptr;
     }
-
     Line a = other.getl1();
     Line b = other.getl2();
     Line c = other.getl3();
-
     Line shared = a;
     int sharedCount = 0;
-
     Line sides[3] = {a, b, c};
-
     for (int i = 0; i < 3; i++){
         int count = 0;
-
         if (hasLineP(first, sides[i])){
             count++;
         }
@@ -121,14 +119,11 @@ Hexagon* Pentagon :: operator+(const Triangle& other) const{
             return nullptr;
         }
     }
-
     if (sharedCount != 1){
         cout << "Triangle must share one outer edge" << endl;
         return nullptr;
     }
-
     Triangle* attached = first;
-
     if (hasLineP(second, shared)){
         attached = second;
     }
@@ -156,7 +151,6 @@ Hexagon* Pentagon :: operator+(const Triangle& other) const{
     }
     line = attached->getl1();
     Point s = line.getp1();
-
     if (samePointP(s, p) || samePointP(s, q)){
         s = line.getp2();
     }
@@ -191,6 +185,59 @@ Hexagon* Pentagon :: operator+(const Triangle& other) const{
 
     return result;
 }
+
+Rectangle* Pentagon :: operator-(const Triangle& other) const{
+    Triangle* third = prevTriangle;
+    if (third == nullptr){
+        cout << "Invalid Pentagon" << endl;
+        return nullptr;
+    }
+    Triangle* second = third->getprevTriangle();
+    if (second == nullptr){
+        cout << "Invalid Pentagon" << endl;
+        return nullptr;
+    }
+    Triangle* first = second->getprevTriangle();
+    if (first == nullptr || first->getprevTriangle() != nullptr){
+        cout << "Invalid Pentagon" << endl;
+        return nullptr;
+    }
+
+    Triangle* remaining1 = nullptr;
+    Triangle* remaining2 = nullptr;
+
+    if (sameTriangleP(first, other)){
+        remaining1 = second;
+        remaining2 = third;
+    }
+    else if (sameTriangleP(second, other)){
+        remaining1 = first;
+        remaining2 = third;
+    }
+    else if (sameTriangleP(third, other)){
+        remaining1 = first;
+        remaining2 = second;
+    }
+    else{
+        cout << "Triangle not found in Pentagon" << endl;
+        return nullptr;
+    }
+
+    Triangle t1(0, remaining1->getl1(),
+                  remaining1->getl2(),
+                  remaining1->getl3());
+    Triangle t2(0, remaining2->getl1(),
+                  remaining2->getl2(),
+                  remaining2->getl3());
+
+    Rectangle* result = t1 + t2;
+    if (result == nullptr){
+        cout << "Remaining Triangles do not form a Rectangle" << endl;
+        return nullptr;
+    }
+    return result;
+}
+
 
 
 
