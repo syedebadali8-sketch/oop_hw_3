@@ -32,6 +32,14 @@ Rectangle& Rectangle :: operator=(const Rectangle& other){
     return *this;
 }
 
+void Rectangle :: draw(char canvas[][80]){
+    Triangle* current = prevTriangle;
+    while (current != nullptr){
+        current->draw(canvas);
+        current = current->getprevTriangle();
+    }
+}
+
 Rectangle :: ~Rectangle(){
     delete prevTriangle;
     prevTriangle = nullptr;
